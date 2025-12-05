@@ -7,9 +7,9 @@ AuditGPT is a production-grade, autonomous smart contract auditing platform desi
 ![Network](https://img.shields.io/badge/network-Polygon%20PoS-purple.svg)
 ![AI Model](https://img.shields.io/badge/AI-Gemini%203.0%20Pro-4285F4.svg)
 
-## 🚀 Key Features
+## Key Features
 
-### 🛡️ Deep Security Analysis (Source Code Mode)
+### Deep Security Analysis (Source Code Mode)
 - **Direct Code Input**: Paste Solidity source directly for line-by-line analysis.
 - **Visual Progress Pipeline**: Real-time visualization of the audit steps (Static -> Gas -> Economic -> Upgrade).
 - **Deterministic Audits**: Uses fixed seeds (`42`) and greedy decoding (`Temperature 0`, `TopK 1`) to ensure consistent, reproducible results.
@@ -19,27 +19,27 @@ AuditGPT is a production-grade, autonomous smart contract auditing platform desi
   - Access Control Failures (SWC-105)
   - Unchecked Return Values (SWC-104)
 
-### 🏗️ Upgradeability & Proxy Checks
+### Upgradeability & Proxy Checks
 - **Proxy Patterns**: Detects UUPS, Transparent, Beacon, and Diamond proxy implementations.
 - **Storage Safety**: Analyzes storage layout for collisions and validates initialization logic.
 - **Self-Destruct**: Checks for unsafe `selfdestruct` or `delegatecall` usage.
 
-### ⚡ Gas & Economic Optimization
+### Gas & Economic Optimization
 - **Gas Profiling**: Identifies expensive loops, storage packing inefficiencies, and redundant operations.
 - **Economic Risk Modeling**: Simulates Flash Loan attacks, Price Oracle manipulation, and Front-running scenarios.
 
-### 📡 Live Monitoring Dashboard
+### Live Monitoring Dashboard
 - **Real-Time Watchtower**: Connects directly to **Polygon Public RPCs** (`polygon-rpc.com`) to monitor live blockchain events.
 - **Live Gas Tracker**: Visualizes real-time gas prices (Gwei) to help time deployments.
 - **Event Feed**: Decodes live transactions and emits alerts for high-value transfers.
 - **Resilience**: Built-in connection health monitoring, auto-reconnection logic, and manual **Retry Connection** capabilities.
 
-### 📄 Professional Reporting
+### Professional Reporting
 - **Executive PDF Export**: Generates detailed, professional-grade security reports.
 - **Detailed Metrics**: Breakdown of vulnerabilities by severity, confidence, and impact.
 - **Transparency**: Explicitly states the AI model version used for each audit.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend**: React, TypeScript, Tailwind CSS, Vite
 - **AI Engine**: Google Gemini 3.0 Pro (Thinking Mode, 32k Token Budget)
@@ -48,11 +48,11 @@ AuditGPT is a production-grade, autonomous smart contract auditing platform desi
 - **Reporting**: jsPDF & jsPDF-AutoTable
 - **Icons**: Lucide React
 
-## 📦 Installation & Setup
+## Installation & Setup
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/auditgpt.git
+   git clone https://github.com/dinitheth/AuditGPT-V1
    cd auditgpt
    ```
 
