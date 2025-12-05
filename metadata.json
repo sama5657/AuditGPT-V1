@@ -1,0 +1,5 @@
+{
+  "name": "AuditGPT",
+  "description": "AI-Powered Smart Contract Auditor for Polygon PoS. Real-time vulnerability detection, automated reporting, and remediation suggestions.",
+  "requestFramePermissions": []
+}
