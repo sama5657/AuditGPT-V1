@@ -1,13 +1,13 @@
 import { GoogleGenAI, Type, Schema } from "@google/genai";
 import { AuditReport, Severity } from '../types';
 
-const API_KEY = process.env.API_KEY || '';
+const API_KEY = process.env.GOOGLE_API_KEY || '';
 
 const AUDIT_SYSTEM_PROMPT = `
-You are AuditGPT, a world-class Smart Contract Auditor and Security Researcher specialized in the Polygon PoS EVM ecosystem.
+You are AuditGPT, a world-class Smart Contract Auditor and Security Researcher.
 
 YOUR MISSION:
-Perform a rigoruous, production-grade security audit on the provided Solidity source code. 
+Perform a rigorous, production-grade security audit on the provided Solidity source code. 
 You must simulate the capabilities of static analysis tools (like Slither, Mythril) and manual economic review.
 
 ANALYSIS REQUIREMENTS:
