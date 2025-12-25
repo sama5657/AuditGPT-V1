@@ -47,6 +47,21 @@ export interface UpgradeabilityRisk {
   recommendation: string;
 }
 
+export interface ContractMetrics {
+  lineCount: number;
+  functionCount: number;
+  stateVariables: number;
+  publicFunctions: number;
+  internalFunctions: number;
+  externalCalls: string[];
+  importedLibraries: string[];
+  estimatedComplexity: 'Simple' | 'Moderate' | 'Complex' | 'Very Complex';
+  usesOpenZeppelin: boolean;
+  hasEvents: boolean;
+  hasModifiers: boolean;
+  inheritanceDepth: number;
+}
+
 export interface AuditReport {
   contractName: string;
   contractAddress?: string;
@@ -60,6 +75,8 @@ export interface AuditReport {
   upgradeabilityAnalysis: UpgradeabilityRisk[];
   formalVerificationSuggestions: string[];
   modelUsed?: string; // Track which AI model generated the report
+  metrics?: ContractMetrics; // Contract code metrics
+  detectedLibraries?: string[]; // Common libraries detected
 }
 
 export interface JobProgress {

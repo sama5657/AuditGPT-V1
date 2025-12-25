@@ -1,5 +1,6 @@
 import { GoogleGenAI, Type, Schema } from "@google/genai";
 import { AuditReport, Severity } from '../types';
+import { analyzeContractMetrics, detectCommonLibraries } from './contractAnalyzer';
 
 const API_KEY = process.env.GOOGLE_API_KEY || '';
 
@@ -186,10 +187,14 @@ export const performFullAudit = async (sourceCode: string, contractName?: string
       throw new Error("Failed to parse AI Analysis results. The model output was not valid JSON.");
     }
 
+    // Analyze contract metrics and detect libraries
+    const metrics = analyzeContractMetrics(sourceCode);
+    const detectedLibraries = detectCommonLibraries(sourceCode);
+
     return {
       contractName: data.contractName || contractName || "SmartContract",
       contractAddress: "", // Populated by caller
-      network: "Polygon PoS",
+      network: "EVM Compatible",
       auditDate: new Date().toISOString(),
       overallScore: data.overallScore,
       summary: data.summary,
@@ -198,7 +203,9 @@ export const performFullAudit = async (sourceCode: string, contractName?: string
       economicAnalysis: data.economicAnalysis.map((e: any) => ({ ...e, riskLevel: e.riskLevel as Severity })),
       upgradeabilityAnalysis: (data.upgradeabilityAnalysis || []).map((u: any) => ({ ...u, severity: u.severity as Severity })),
       formalVerificationSuggestions: data.formalVerificationSuggestions,
-      modelUsed: result.modelUsed // Pass the actual model used to the report
+      modelUsed: result.modelUsed, // Pass the actual model used to the report
+      metrics, // Add contract metrics
+      detectedLibraries // Add detected libraries
     };
 
   } catch (error) {

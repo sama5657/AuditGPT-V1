@@ -16,7 +16,7 @@ const COLORS = {
   [Severity.INFO]: '#3b82f6', 
 };
 
-type Tab = 'security' | 'gas' | 'economic' | 'upgrade';
+type Tab = 'security' | 'gas' | 'economic' | 'upgrade' | 'metrics';
 
 export const AuditDashboard: React.FC<AuditDashboardProps> = ({ report, onReset }) => {
   const [activeTab, setActiveTab] = useState<Tab>('security');
@@ -105,6 +105,12 @@ export const AuditDashboard: React.FC<AuditDashboardProps> = ({ report, onReset 
           onClick={() => setActiveTab('economic')} 
           icon={Icons.Activity} 
           label={`Economic (${report.economicAnalysis.length})`} 
+        />
+        <TabButton 
+          active={activeTab === 'metrics'} 
+          onClick={() => setActiveTab('metrics')} 
+          icon={Icons.TrendingUp} 
+          label="Metrics" 
         />
         <TabButton 
           active={activeTab === 'upgrade'} 
@@ -328,6 +334,80 @@ export const AuditDashboard: React.FC<AuditDashboardProps> = ({ report, onReset 
             )}
          </div>
       )}
+
+      {activeTab === 'metrics' && (
+         <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2">
+            {report.metrics ? (
+               <>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                     <MetricCard label="Lines of Code" value={report.metrics.lineCount.toString()} />
+                     <MetricCard label="Functions" value={report.metrics.functionCount.toString()} />
+                     <MetricCard label="State Variables" value={report.metrics.stateVariables.toString()} />
+                     <MetricCard label="Complexity" value={report.metrics.estimatedComplexity} />
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                     <MetricCard label="Public Fns" value={report.metrics.publicFunctions.toString()} />
+                     <MetricCard label="Internal Fns" value={report.metrics.internalFunctions.toString()} />
+                     <MetricCard label="Inheritance" value={report.metrics.inheritanceDepth.toString()} />
+                  </div>
+                  <div className="bg-slate-800 border border-slate-700 rounded-xl p-6 shadow-lg">
+                     <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <Icons.Code className="w-5 h-5 text-blue-400" />
+                        Code Characteristics
+                     </h3>
+                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="bg-slate-900/50 p-3 rounded-lg border border-slate-700">
+                           <p className="text-slate-400 text-xs uppercase mb-1">Events</p>
+                           <p className="text-lg font-bold text-slate-200">{report.metrics.hasEvents ? '✓ Yes' : '✗ No'}</p>
+                        </div>
+                        <div className="bg-slate-900/50 p-3 rounded-lg border border-slate-700">
+                           <p className="text-slate-400 text-xs uppercase mb-1">Modifiers</p>
+                           <p className="text-lg font-bold text-slate-200">{report.metrics.hasModifiers ? '✓ Yes' : '✗ No'}</p>
+                        </div>
+                        <div className="bg-slate-900/50 p-3 rounded-lg border border-slate-700">
+                           <p className="text-slate-400 text-xs uppercase mb-1">OpenZeppelin</p>
+                           <p className="text-lg font-bold text-slate-200">{report.metrics.usesOpenZeppelin ? '✓ Yes' : '✗ No'}</p>
+                        </div>
+                     </div>
+                  </div>
+                  {report.metrics.externalCalls.length > 0 && (
+                     <div className="bg-slate-800 border border-slate-700 rounded-xl p-6 shadow-lg">
+                        <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                           <Icons.Cpu className="w-5 h-5 text-orange-400" />
+                           External Calls ({report.metrics.externalCalls.length})
+                        </h3>
+                        <div className="flex flex-wrap gap-2">
+                           {report.metrics.externalCalls.map((call, i) => (
+                              <span key={i} className="px-3 py-1 text-xs bg-slate-900 text-slate-300 rounded-full border border-slate-700 font-mono">
+                                 {call}
+                              </span>
+                           ))}
+                        </div>
+                     </div>
+                  )}
+                  {report.detectedLibraries && report.detectedLibraries.length > 0 && (
+                     <div className="bg-slate-800 border border-slate-700 rounded-xl p-6 shadow-lg">
+                        <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                           <Icons.Plus className="w-5 h-5 text-green-400" />
+                           Detected Libraries ({report.detectedLibraries.length})
+                        </h3>
+                        <div className="flex flex-wrap gap-2">
+                           {report.detectedLibraries.map((lib, i) => (
+                              <span key={i} className="px-3 py-1 text-xs bg-green-500/10 text-green-400 rounded-full border border-green-500/20 font-mono">
+                                 {lib}
+                              </span>
+                           ))}
+                        </div>
+                     </div>
+                  )}
+               </>
+            ) : (
+               <div className="text-center p-12 text-slate-500 bg-slate-800/50 rounded-xl border border-slate-700 border-dashed">
+                  No metrics available for this contract.
+               </div>
+            )}
+         </div>
+      )}
     </div>
   );
 };
@@ -360,3 +440,10 @@ const Badge: React.FC<{ severity: Severity; size?: 'sm' | 'lg' }> = ({ severity,
     </span>
   );
 };
+
+const MetricCard: React.FC<{ label: string; value: string }> = ({ label, value }) => (
+  <div className="bg-slate-800 border border-slate-700 rounded-lg p-4 shadow-lg">
+    <p className="text-slate-400 text-xs uppercase tracking-wider mb-2 font-medium">{label}</p>
+    <p className="text-2xl font-bold text-white">{value}</p>
+  </div>
+);
