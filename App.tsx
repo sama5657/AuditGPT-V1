@@ -6,7 +6,6 @@ import { AppState, LogEntry, AuditReport, JobProgress, AnalysisStatus } from './
 import { performFullAudit } from './services/geminiService';
 import { AuditDashboard } from './components/AuditDashboard';
 import { Documentation } from './components/Documentation';
-import { MonitoringDashboard } from './components/MonitoringDashboard';
 import { LandingPage } from './components/LandingPage';
 
 export default function App() {
@@ -168,12 +167,6 @@ export default function App() {
             </div>
             <div className="flex items-center gap-4">
               <button 
-                onClick={() => setAppState(AppState.MONITORING)}
-                className={`text-sm flex items-center gap-2 transition-colors ${appState === AppState.MONITORING ? 'text-white' : 'text-slate-400 hover:text-white'}`}
-              >
-                <Icons.Activity className="w-4 h-4" /> Live Monitoring
-              </button>
-              <button 
                 onClick={() => setAppState(AppState.DOCUMENTATION)}
                 className="text-sm text-slate-400 hover:text-white transition-colors"
               >
@@ -182,7 +175,7 @@ export default function App() {
               <div className="h-4 w-px bg-slate-700"></div>
               <div className="flex items-center gap-2 text-xs font-mono text-purple-400 px-3 py-1 bg-purple-500/10 rounded-full border border-purple-500/20 shadow-[0_0_10px_rgba(168,85,247,0.2)]">
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
-                Polygon PoS Mainnet
+                Smart Contract Auditor
               </div>
             </div>
           </div>
@@ -196,8 +189,6 @@ export default function App() {
             setAppState(AppState.IDLE);
             setSourceInput('');
           }} />
-        ) : appState === AppState.MONITORING ? (
-          <MonitoringDashboard onBack={() => setAppState(AppState.IDLE)} />
         ) : appState === AppState.RESULTS && report ? (
           <AuditDashboard 
             report={report} 
@@ -216,7 +207,7 @@ export default function App() {
                 <span>Production-Grade Security Analysis</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-                Audit Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">Polygon Smart Contracts</span>
+                Audit Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">Smart Contracts</span>
               </h1>
               <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
                 Paste your Solidity code below to perform a deep static analysis, optimize gas usage, and identify economic risks using advanced AI reasoning.

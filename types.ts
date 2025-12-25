@@ -77,44 +77,11 @@ export enum AppState {
   PROCESSING = 'PROCESSING',
   RESULTS = 'RESULTS',
   ERROR = 'ERROR',
-  DOCUMENTATION = 'DOCUMENTATION',
-  MONITORING = 'MONITORING'
+  DOCUMENTATION = 'DOCUMENTATION'
 }
 
 export interface LogEntry {
   timestamp: string;
   message: string;
   type: 'info' | 'success' | 'warning' | 'error' | 'process';
-}
-
-// Monitoring Specific Types
-export interface AlertConfig {
-  email: string;
-  slackWebhook: string;
-  discordWebhook: string;
-  minEthTransfer: number;
-  gasThreshold: number;
-  detectFlashLoans: boolean;
-}
-
-export interface MonitoringEvent {
-  id: string;
-  timestamp: number;
-  type: 'TRANSACTION' | 'ALERT' | 'GAS_SPIKE' | 'EXPLOIT_ATTEMPT';
-  severity: Severity;
-  message: string;
-  hash: string;
-  value?: string;
-}
-
-export interface MonitoredContract {
-  address: string;
-  name: string;
-  status: 'active' | 'paused';
-  events: MonitoringEvent[];
-  stats: {
-    txCount: number;
-    volume: number;
-    lastGas: number;
-  }
 }

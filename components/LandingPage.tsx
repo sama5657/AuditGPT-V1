@@ -50,12 +50,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onLaunch, onLearnMore 
           </div>
           
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-white leading-tight mb-8 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
-            AI-Powered Security <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 animate-gradient">for Polygon PoS</span>
+            AI-Powered <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 animate-gradient">Smart Contract Security</span>
           </h1>
           
           <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
-            The first production-grade autonomous auditor that combines deep static analysis with real-time on-chain monitoring.
+            The first production-grade autonomous auditor that combines deep static analysis with AI-powered reasoning.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">

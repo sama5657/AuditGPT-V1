@@ -1,54 +1,49 @@
-# AuditGPT - AI-Powered Smart Contract Auditor for Polygon PoS
+# AuditGPT - AI-Powered Smart Contract Auditor
 
-AuditGPT is a production-grade, autonomous smart contract auditing platform designed specifically for the Polygon Proof-of-Stake (PoS) ecosystem. It leverages the advanced reasoning capabilities of **Google Gemini 3.0 Pro (Thinking Mode)** to perform deterministic, deep-dive security analysis on Solidity source code, while simultaneously offering a real-time watchtower for deployed contracts.
+AuditGPT is a production-grade, autonomous smart contract auditing platform powered by **Google Gemini 3.0 Pro (Thinking Mode)**. It performs deterministic, deep-dive security analysis on Solidity source code to identify vulnerabilities, optimize gas usage, and assess economic risks using advanced AI reasoning.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Status](https://img.shields.io/badge/status-Production-green.svg)
-![Network](https://img.shields.io/badge/network-Polygon%20PoS-purple.svg)
 ![AI Model](https://img.shields.io/badge/AI-Gemini%203.0%20Pro-4285F4.svg)
 
-## Key Features
+## Key Benefits
 
-### Deep Security Analysis (Source Code Mode)
-- **Direct Code Input**: Paste Solidity source directly for line-by-line analysis.
-- **Visual Progress Pipeline**: Real-time visualization of the audit steps (Static -> Gas -> Economic -> Upgrade).
-- **Deterministic Audits**: Uses fixed seeds (`42`) and greedy decoding (`Temperature 0`, `TopK 1`) to ensure consistent, reproducible results.
-- **Static Analysis Simulation**: Mimics industry-standard tools to identify:
-  - Reentrancy (SWC-107)
-  - Integer Overflows (SWC-101)
-  - Access Control Failures (SWC-105)
-  - Unchecked Return Values (SWC-104)
+### 🔍 Comprehensive Security Analysis
+- **Deep Vulnerability Detection**: Identifies critical security issues including Reentrancy, Integer Overflows, Access Control failures, and more using advanced AI reasoning
+- **Deterministic Results**: Fixed-seed analysis ensures consistent, reproducible audit results
+- **Fast Turnaround**: Complete security audits in under 60 seconds
+- **No Configuration**: Works out-of-the-box - simply paste your code
 
-### Upgradeability & Proxy Checks
-- **Proxy Patterns**: Detects UUPS, Transparent, Beacon, and Diamond proxy implementations.
-- **Storage Safety**: Analyzes storage layout for collisions and validates initialization logic.
-- **Self-Destruct**: Checks for unsafe `selfdestruct` or `delegatecall` usage.
+### ⚡ Gas Optimization
+- **Cost Reduction**: Identifies expensive loops, storage inefficiencies, and redundant operations to reduce execution costs
+- **Performance Analysis**: Provides concrete gas savings estimates for each optimization
 
-### Gas & Economic Optimization
-- **Gas Profiling**: Identifies expensive loops, storage packing inefficiencies, and redundant operations.
-- **Economic Risk Modeling**: Simulates Flash Loan attacks, Price Oracle manipulation, and Front-running scenarios.
+### 💰 Economic Risk Modeling
+- **Attack Vector Simulation**: Analyzes complex attack scenarios including Flash Loan attacks, Price Oracle manipulation, and Front-running attacks
+- **Financial Risk Assessment**: Evaluates incentive alignment and game-theoretic weaknesses
 
-### Live Monitoring Dashboard
-- **Real-Time Watchtower**: Connects directly to **Polygon Public RPCs** (`polygon-rpc.com`) to monitor live blockchain events.
-- **Live Gas Tracker**: Visualizes real-time gas prices (Gwei) to help time deployments.
-- **Event Feed**: Decodes live transactions and emits alerts for high-value transfers.
-- **Resilience**: Built-in connection health monitoring, auto-reconnection logic, and manual **Retry Connection** capabilities.
+### 🔧 Proxy & Upgradeability Checks
+- **Pattern Detection**: Identifies UUPS, Transparent, Beacon, and Diamond proxy implementations
+- **Storage Safety**: Analyzes storage layout for collisions and validates initialization logic
+- **Upgrade Validation**: Checks for unsafe delegatecall usage and selfdestruct vulnerabilities
 
-### Professional Reporting
-- **Executive PDF Export**: Generates detailed, professional-grade security reports.
-- **Detailed Metrics**: Breakdown of vulnerabilities by severity, confidence, and impact.
-- **Transparency**: Explicitly states the AI model version used for each audit.
+### 📊 Professional Reporting
+- **Executive Summaries**: Generate detailed PDF reports with severity scores and remediation steps
+- **Code Fixes**: Automatic suggestions for fixing identified vulnerabilities
+- **Transparency**: Clearly documents the AI model version used for each audit
 
 ## Tech Stack
 
-- **Frontend**: React, TypeScript, Tailwind CSS, Vite
+- **Frontend**: React, TypeScript, Vite, Tailwind CSS
 - **AI Engine**: Google Gemini 3.0 Pro (Thinking Mode, 32k Token Budget)
-- **Blockchain**: Ethers.js v6 (Direct RPC Polling)
-- **Visualization**: Recharts (Data Visualization)
+- **Smart Contract Language**: Solidity (0.5 - 0.8+)
+- **Visualization**: Recharts
 - **Reporting**: jsPDF & jsPDF-AutoTable
 - **Icons**: Lucide React
 
-## Installation & Setup
+## Getting Started
+
+### Installation
 
 1. **Clone the Repository**
    ```bash
@@ -66,7 +61,7 @@ AuditGPT is a production-grade, autonomous smart contract auditing platform desi
    ```env
    API_KEY=your_google_genai_api_key_here
    ```
-   *Get a free API key from [Google AI Studio](https://aistudio.google.com/).*
+   Get a free API key from [Google AI Studio](https://aistudio.google.com/)
 
 4. **Run Locally**
    ```bash
@@ -78,31 +73,58 @@ AuditGPT is a production-grade, autonomous smart contract auditing platform desi
    npm run build
    ```
 
-## 📖 Usage Guide
+## Usage Guide
 
-### Mode 1: Security Audit
-1. Navigate to the **Home** screen.
-2. Paste your **Solidity Source Code** into the secure editor.
-3. Click **"Start Security Audit"**.
-4. Watch the **Green Progress Bar** as the system pipeline executes:
-   - **Static Analysis**: Vulnerability detection.
-   - **Gas Profiling**: Optimization suggestions.
-   - **Economic Modeling**: Financial risk assessment.
-   - **Upgradeability Check**: Proxy safety verification.
-5. Review the interactive dashboard or export the **PDF Report**.
+### Smart Contract Audit
+1. Navigate to the **Home** screen
+2. Paste your **Solidity Source Code** into the editor
+3. Click **"Start Security Audit"**
+4. Watch the progress bar as the system executes the analysis pipeline:
+   - **Static Analysis**: Vulnerability detection
+   - **Gas Profiling**: Optimization suggestions
+   - **Economic Modeling**: Financial risk assessment
+   - **Upgradeability Check**: Proxy safety verification
+5. Review the interactive dashboard or export the **PDF Report**
 
-### Mode 2: Live Monitoring
-1. Click **"Live Monitoring"** in the top navigation bar.
-2. The dashboard automatically connects to the Polygon Mainnet via RPC.
-3. **Add Contract**: Enter a name and address (e.g., a token or vault) to the watchlist.
-4. **Configure Alerts**: Set thresholds for Gas Price (Gwei) or High-Value Transfers.
-5. Watch the **Live Feed** for real-time transaction events.
-6. If connection drops (e.g., Rate Limit 429), use the **Retry Connection** button.
+## Features
 
-## ⚠️ Disclaimer
+### Deep Static Analysis
+Detects critical vulnerabilities using deterministic AI reasoning:
+- Reentrancy vulnerabilities
+- Integer overflows and underflows
+- Access control failures
+- Unchecked return values
+- Logic errors and edge cases
+
+### Security Lifecycle
+From pre-deployment static analysis to comprehensive security assessment, AuditGPT covers every angle of smart contract security in one unified platform.
+
+### Severity Classification
+All findings are ranked by:
+- **Severity Level**: High, Medium, Low, Info
+- **Confidence Score**: How confident the AI is in the finding
+- **Impact Assessment**: Potential consequences of the vulnerability
+
+## API Requirements
+
+AuditGPT requires:
+- **Google Gemini API Key**: For AI-powered security analysis
+- **Internet Connection**: To communicate with the Gemini API
+
+## Disclaimer
 
 AuditGPT is an advanced AI-assisted auditing tool. While it provides high-confidence insights and mimics professional analysis, **it does not replace a manual audit by a human security firm**. Always conduct rigorous testing and formal verification before deploying high-value smart contracts.
 
-## 📄 License
+For critical production contracts, consider supplementing AuditGPT with:
+- Professional manual security audits
+- Formal verification and mathematical proofs
+- Bug bounty programs
+- Extensive testing and monitoring
+
+## License
 
 This project is licensed under the MIT License.
+
+## Support
+
+For issues, questions, or feature requests, please open an issue on GitHub.

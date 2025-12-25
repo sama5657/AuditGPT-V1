@@ -1,10 +1,10 @@
 # AuditGPT
 
-AI-Powered Security Auditor for Polygon PoS - The first production-grade autonomous auditor that combines deep static analysis with real-time on-chain monitoring.
+AI-Powered Smart Contract Security Auditor - A production-grade autonomous auditing platform that combines deep static analysis with AI-powered reasoning.
 
 ## Overview
 
-This is a React + TypeScript + Vite frontend application that provides smart contract auditing services powered by Google Gemini AI.
+This is a React + TypeScript + Vite frontend application that provides comprehensive smart contract auditing services powered by Google Gemini 3.0 Pro AI.
 
 ## Tech Stack
 
@@ -12,7 +12,6 @@ This is a React + TypeScript + Vite frontend application that provides smart con
 - **Build Tool**: Vite
 - **Styling**: Tailwind CSS (via CDN)
 - **AI Integration**: Google Gemini 3.0 Pro
-- **Blockchain**: Polygon PoS (via ethers.js)
 - **Charts**: Recharts
 - **PDF Generation**: jsPDF
 
@@ -25,11 +24,9 @@ This is a React + TypeScript + Vite frontend application that provides smart con
 │   ├── Icons.tsx
 │   ├── LandingPage.tsx
 │   ├── LandingSections.tsx
-│   ├── Logo.tsx
-│   └── MonitoringDashboard.tsx
+│   └── Logo.tsx
 ├── services/            # API services
-│   ├── geminiService.ts
-│   └── polygonService.ts
+│   └── geminiService.ts
 ├── utils/               # Utility functions
 │   └── pdfGenerator.ts
 ├── App.tsx              # Main app component
@@ -37,6 +34,16 @@ This is a React + TypeScript + Vite frontend application that provides smart con
 ├── types.ts             # TypeScript types
 └── vite.config.ts       # Vite configuration
 ```
+
+## Features
+
+- **Deep Security Analysis**: Detects critical vulnerabilities using advanced AI reasoning
+- **Gas Optimization**: Identifies cost reduction opportunities  
+- **Economic Risk Modeling**: Simulates complex attack vectors
+- **Upgradeability Checks**: Verifies proxy patterns and storage safety
+- **Professional Reporting**: Generate executive PDF reports
+- **Fast Turnaround**: Complete audits in under 60 seconds
+- **No Configuration**: Works out-of-the-box
 
 ## Running the Application
 

@@ -12,10 +12,7 @@ export const LandingSections: React.FC = () => {
           <Icons.Cpu className="w-5 h-5" /> Google Gemini 3.0
         </div>
         <div className="flex items-center gap-2 text-slate-300 font-bold text-sm">
-          <div className="w-2 h-2 rounded-full bg-purple-500"></div> Polygon PoS
-        </div>
-        <div className="flex items-center gap-2 text-slate-300 font-bold text-sm">
-          <Icons.Code className="w-5 h-5" /> Solidity 0.8+
+          <Icons.Code className="w-5 h-5" /> Solidity Auditing
         </div>
         <div className="flex items-center gap-2 text-slate-300 font-bold text-sm">
           <Icons.Shield className="w-5 h-5" /> Deterministic AI
@@ -47,10 +44,6 @@ export const LandingSections: React.FC = () => {
            <FeatureRow 
             title="Upgradeability Checks"
             desc="Verifies proxy patterns (Diamond, UUPS), storage slot collisions, and initialization safety."
-          />
-          <FeatureRow 
-            title="Live Watchtower"
-            desc="Connects to Polygon RPCs to monitor gas prices, decode events, and alert on suspicious activity in real-time."
           />
           <FeatureRow 
             title="Professional Reports"
@@ -86,14 +79,13 @@ export const LandingSections: React.FC = () => {
 
       {/* Stats / Footer */}
       <div className="border-t border-slate-800 pt-12 pb-6 text-center">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12">
             <Stat val="0" label="Configuration Needed" />
-            <Stat val="100%" label="Polygon Compatible" />
             <Stat val="< 60s" label="Audit Time" />
-            <Stat val="24/7" label="Live Monitoring" />
+            <Stat val="AI-Powered" label="Security Analysis" />
         </div>
         <p className="text-slate-500 text-sm">
-          &copy; {new Date().getFullYear()} AuditGPT. Built for the Polygon Ecosystem.
+          &copy; {new Date().getFullYear()} AuditGPT. AI-Powered Smart Contract Security.
         </p>
       </div>
 
