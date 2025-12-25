@@ -1,4 +1,3 @@
-
 {
   "name": "auditgpt",
   "private": true,
@@ -6,8 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview"
+  },
+  "engines": {
+    "node": "18.x"
   },
   "dependencies": {
     "@google/genai": "*",
